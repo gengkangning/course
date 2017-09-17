@@ -68,7 +68,7 @@
 
 * childprocess代表启动的其他进程
 
-*　process.stdin.resume();  //进程会保持不自动退出(ctrl+C 退出进程)
+* process.stdin.resume();  //进程会保持不自动退出(ctrl+C 退出进程)
 
 1. (1)!bash
 
