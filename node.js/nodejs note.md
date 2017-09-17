@@ -1,10 +1,10 @@
 # 简介
 
-1. node.js基于ChromeV8引擎的javascript运行环境 
+* node.js基于ChromeV8引擎的javascript运行环境 
 
-node.js API分为全局对象 普通模块
+* node.js API分为全局对象 普通模块
 
-2. linux中使用git仓库：
+* linux中使用git仓库：
 
 进入git
 
