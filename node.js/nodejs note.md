@@ -4,7 +4,7 @@
 
 * node.js API分为全局对象 普通模块
 
-*　inux中使用git仓库：
+* inux中使用git仓库：
 
 ### 进入git
 
@@ -62,7 +62,7 @@
 
 * process 代表当前进程
 
-*　process.argv 属性返回一个数组，这个数组包含了启动Node.js进程时的命令行参数。第一个元素为process.execPath。如果需要获取argv[0]的值请参见     　process.argv0。第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。
+* process.argv 属性返回一个数组，这个数组包含了启动Node.js进程时的命令行参数。第一个元素为process.execPath。如果需要获取argv[0]的值请参见     　process.argv0。第二个元素为当前执行的JavaScript文件路径。剩余的元素为其他命令行参数。
 
 * eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
 
