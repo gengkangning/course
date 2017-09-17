@@ -70,11 +70,11 @@
 
 *　process.stdin.resume();  //进程会保持不自动退出(ctrl+C 退出进程)
 
-(1)!bash
+1. (1)!bash
 
-(2)ps aux 查看当前系统中的进程
+2. (2)ps aux 查看当前系统中的进程
 
-(3)exit
+3. (3)exit
 
 
 * 命令：node -v (当前Node版本号) 对应console.log(node.version)
