@@ -1,4 +1,4 @@
-# 简介
+# 第一章：简介
 
 * node.js基于ChromeV8引擎的javascript运行环境 
 
@@ -36,7 +36,9 @@
 
 # node.js API使用
 
-### 使用全局路径变量和文件变量
+# 第二章：全局：路径变量 
+
+### 1.使用全局路径变量和文件变量
 
 * （当前使用的脚本文件路径）file_name: /home/wangding/nodejs-demo/02-global-var/01-file-dir-name.js
 
@@ -44,13 +46,15 @@
 
 * 通常用拼接字符串的方式写路径
 
-### 控制台 console.log
+# 第三章：全局：控制台
+
+### 1.控制台 console.log
 
 * ./01-format.js >msg.txt 命令行重定向
 
 * cat err.txt 打开err.txt文件
 
-### 耗时任务时间测试：
+### 2.基准时间测试：
 
 * console.time('GET-DATA')  //括号里是一个标记表明测试的是一个什么任务
 
@@ -58,7 +62,9 @@
 
 * console.timeEnd('GET-DATA')  //结束代码
 
-### 进程对象的用法
+# 第四章：全局：进程
+
+### process对象用法
 
 * process 代表当前进程
 
@@ -128,3 +134,28 @@
 * 2.kill -2(-20)  + 进程 id
 
 * 3.编写kill脚本发消息
+
+# 第五章：全局：定时器
+
+### 使用setTimeout 延迟执行任务
+
+* 使用延迟执行通常用来模拟真实的异步操作
+
+* 清楚定时器：三种方法：
+1. 使用一个延迟执行任务，当到达某个时间就清楚定时器。
+2. 在内部设置一个变量，将这个变量计数，计到某个数字的时候清楚定时器。
+3. 调用timeID.unref(); 这个定时器会在很长一个任务（耗时操作）后自动清楚定时器。
+
+# 全局：Buffer
+
+###  Buffer 的基本使用方法
+
+* buffer初始化的三种方法：
+1. 使用数组的方法初始化：~ var array=['a',0xba,0xab]; buffer=new Buffer(array); ~
+2. 直接初始化：~ var buffer=new Buffer("hello world!", "utf8");   ~ 注意   ：使用buffer.toString()的方法输出utf8格式
+3. copy：~ buffer1=new Buffer(buffer2.length) buffer2.copy(buffer1,0,0,buffer2.length)  ~
+
+* 使用buffer进行编码转换  var buf=new Buffer(x); console.log('user name and passwd',buf.toString('base64'));
+
+
+
