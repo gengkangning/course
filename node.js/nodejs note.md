@@ -151,9 +151,9 @@
 ###  Buffer 的基本使用方法
 
 * buffer初始化的三种方法：
-1. 使用数组的方法初始化：~ var array=['a',0xba,0xab]; buffer=new Buffer(array); ~
-2. 直接初始化：~ var buffer=new Buffer("hello world!", "utf8");   ~ 注意   ：使用buffer.toString()的方法输出utf8格式
-3. copy：~ buffer1=new Buffer(buffer2.length) buffer2.copy(buffer1,0,0,buffer2.length)  ~
+1. 使用数组的方法初始化：`` var array=['a',0xba,0xab]; buffer=new Buffer(array); ``
+2. 直接初始化：`` var buffer=new Buffer("hello world!", "utf8");  `` 注意   ：使用buffer.toString()的方法输出utf8格式
+3. copy：`` buffer1=new Buffer(buffer2.length) buffer2.copy(buffer1,0,0,buffer2.length)  ``
 
 * 使用buffer进行编码转换  var buf=new Buffer(x); console.log('user name and passwd',buf.toString('base64'));
 
