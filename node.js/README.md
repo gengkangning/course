@@ -157,5 +157,24 @@
 
 * 使用buffer进行编码转换  var buf=new Buffer(x); console.log('user name and passwd',buf.toString('base64'));
 
+* sz 文件名 可以将文件从linux上放到windows上
 
+# 全局：模块管理
 
+### 使用node.js全局模块
+
+### 使用第三方模块
+
+* npm install date-now 安装now模块
+
+### 自定义模块
+
+1. 编写模块JS代码:使用module.exports将这个模块暴露
+
+2. 在主程序中引入模块,var pi=require('./02-export-var');
+
+### 加载一组模块
+
+1. 编写一个export-all.js 通过这个文件将几个模块关联起来
+
+2. 在主程序中只需要引入export-all.js即可
