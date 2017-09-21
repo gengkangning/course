@@ -1,2 +1,1 @@
-#README.md
- my course
+# 记录一些平时课堂上的笔记
