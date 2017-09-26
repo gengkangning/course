@@ -146,7 +146,7 @@
 2. 在内部设置一个变量，将这个变量计数，计到某个数字的时候清楚定时器。
 3. 调用timeID.unref(); 这个定时器会在很长一个任务（耗时操作）后自动清楚定时器。
 
-# 全局：Buffer
+# 全局：Buffer（处理二进制数据流）
 
 ###  Buffer 的基本使用方法
 
@@ -155,17 +155,27 @@
 2. 直接初始化：`` var buffer=new Buffer("hello world!", "utf8");  `` 注意   ：使用buffer.toString()的方法输出utf8格式
 3. copy：`` buffer1=new Buffer(buffer2.length) buffer2.copy(buffer1,0,0,buffer2.length)  ``
 
+* buffer填充方法：fill()
+
+* 把字符串转化成另一种编码格式用的方法是什么？ toString('codingName');
+
+*　从网页上获取一个位图　在命令行输入：wget URL
+
+* 位图二进制文件格式:头信息+数据部分
+
 * 使用buffer进行编码转换  var buf=new Buffer(x); console.log('user name and passwd',buf.toString('base64'));
 
 * sz 文件名 可以将文件从linux上放到windows上
 
 # 全局：模块管理
 
+### require() 引用模块,export 暴露模块接口,module 代表当前模块
+
+### npm ：缩写于 Node Packaged Modules,是node.js的模块管理器
+
+* 安装第三方模块：npm install date-now 安装now模块
+
 ### 使用node.js全局模块
-
-### 使用第三方模块
-
-* npm install date-now 安装now模块
 
 ### 自定义模块
 
@@ -178,3 +188,5 @@
 1. 编写一个export-all.js 通过这个文件将几个模块关联起来
 
 2. 在主程序中只需要引入export-all.js即可
+
+* node.js 中的顶层对象是 global  前端中的顶层对象是window
