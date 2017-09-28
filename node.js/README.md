@@ -195,6 +195,8 @@
 
 ## 两种类的继承方式
 
-1. EventEmitter原型继承方式
+1. EventEmitter原型继承方式 
 
 2. EventEmitter util继承  util.inherits(类名，events.EventEmitter);
+
+
