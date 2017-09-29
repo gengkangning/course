@@ -8,6 +8,8 @@
 
 * 引用（对象）数据类型：Object（Array、Function、Date、Error等），定义为引用类型的变量，其引用分配在栈区或堆区，引用的对象分配在堆区
 
+### 函数不属于数据，但是在JS中可以用typeof方法
+
 ### 数据类型检测方法（typeof、instanceof）
 
 ### 基本类型与引用类型的区别 
@@ -127,6 +129,66 @@
 
 * 作为构造函数调用（this为实例化出来的对象）
 
+### 函数方法调用三种方法(调用对象的函数属性)：
+
+* 方法调用(调用对象的函数属性) robot.say_hello(); 
+
+* 构造函数调用(相当于类的用法,用来生成对象)
+
+* 动态访问对象的函数 ，对象的函数属性依然是函数 `  var robot = {
+                            x   : 2,
+                    say_hello   : function(){ console.log( "Hello!" ); }
+             };
+ robot["say_hello"](); //等价于 robot.say_hello(); `
+
+### this引用的指向
+
+* 无任何前缀的函数调用时，this指向顶层对象或者叫全局对象，浏览器里是window（nodejs里是global）。
+
+* 方法调用的时候，this指向方法所在的对象
+
+* 构造函数里，this指向新生成的实例
+
+* apply/call调用的时候，this指向apply/call方法中的第一个参数
+
+### 例子
+
+` var robot = {
+    name : "cup",
+    say : function() { console.log( "Hi, I'm " + this.name + "."); }
+}
+var fn = robot.say;
+// 将robot.say引用的函数赋值给全局变量 fn.
+
+fn()                        // 打印结果为 Hi, I'm .
+// 执行函数(全局的方法),this引用了全局对象,由于全局对象没有name属性,所以没有取到值. `
+
+` var robot = {
+    name : "cup",
+    say : function() { console.log( "Hi, I'm " + this.name + "."); }
+}
+var fn = robot.say;
+//将robot.say引用的函数赋值给全局变量 fn.
+//相当于给全局对象定义了一个属性fn,并赋予robot.say所指代的函数.
+
+var name = "bower",
+//相当于给全局对象定义了一个属性name,赋值为"bower"，在浏览器里，上面这行代码等价于 window.name = "bower";
+
+fn()                    // 打印结果为 Hi, I'm bower.
+//执行函数fn(相当于调用全局对象的fn方法),执行时this引用了全局对象.所以this.name的值是"bower". `
+
+### 函数的apply与call方法
+
+* 而apply和call的功能是，通过传参的方式，强制函数内的this指定某一对象。this引用的会被指向apply/call的第一个参数。
+
+* 对于apply来说,剩余的参数将通过数组来传递,而call是直接按参数列表传递.
+
+1. ` say.apply({name:"cup"}, [12, "boy"]) ` 
+
+2. ` say.call({name:"cup"}, 12, "boy") `  
+
+* 在实际的编程过程中，我们有时会为了函数回调而使用apply或call调用
+
 ### 函数参数的数量问题
 
 #### JS函数调用时实参数量可以与形参不一致
@@ -140,6 +202,20 @@
 * 基本（原始）类型（Number、String、Boolean、Null、Undefined）
 
 * 引用（对象）类型（Object（Array、Function、Date、Error等）
+
+### 面向对象
+
+* JavaScript是一种没有类的，面向对象的语言。它使用原型继承来代替类继承。
+
+* 那么，原型prototype在哪里呢？其实任何一个函数都有prototype属性。
+
+* 当我们得到一个实例之后，访问实例的原型,使用__proto__属性.
+
+* avascript对象(如robot)拥有自有属性(如通过构造函数this.name=name设置的属性)和继承属性(例如代理自Robot.prototype的属性)两种。
+
+* 在查询对象robot的属性age时，先查找robot中自有属性的age属性，如果没找到，则查找robot继承属性(也就是robot的原型对象:robot.__proto__)中的age属性，直到查找到age或者一个原型是null的对象为止.
+
+* 可以使用in 或者 hasOwnProperty 来判断对象中是否存在属性或者是否存在自有属性。
 
 ### 函数对象
 
@@ -167,6 +243,39 @@ callee 属性是 arguments 对象的一个成员，该属性仅当相关函数�
 1. 获取对象的原型。每一个构造函数都有一个prototype属性，指向另一个对象。
 
 2. 这个对象的所有属性和方法，都会被构造函数的实例继承。
+
+## 原型链
+
+1. 总共三类对象(蓝色大框)
+
+2. 实例对象（通过new XX() 所得到的实例），跟原型链相关的只有 __proto__ 属性，指向其对应的原型对象 *.prototype 。
+
+3. 构造函数对象分原生和自定义两类。跟原型链相关的有 __proto__ 属性，除此之外还有 prototype 属性。它们的 __proto__ 属性都是指向 Function.prototype 这个原型对象的。prototype 也是指向对应的原型对象。
+
+4. 原型对象除了一样拥有 __proto__ 外，也拥有独有的属性 constructor 。它的__proto__ 指向的都是 Object.prototype ，除了 Object.prototype 本身，它自己是指向 null 。而 constructor 属性指向它们对应的构造函数对象。
+
+5. 原型链是基于 __proto__ 的。实例只能通过其对应原型对象的 constructor 才能访问到对应的构造函数对象。构造函数只能通过其对应的 prototype 来访问相应的原型对象。
+
+### 例子
+
+` unction Robot(name){this.name = name;};        //自定义构造函数
+Robot.prototype = {age:12, sex:"boy"};
+var robot = new Robot("bower");
+//通过__proto__寻找原型链的关系:
+//假设
+//robot的原型对象是a.
+//Robot的原型对象是b.
+//Robot.prototype和Function.ptototype的原型对象都是c.
+//Object.prototype的原型对象是d. `
+
+` unction Robot(name){this.name = name;};    //自定义构造函数
+Robot.prototype = {age:12, sex:"boy"};        //设置将会被集成的原型对象
+var robot = new Robot("bower");            //通过构造函数实例化一个对象
+//通过__proto__寻找原型链的关系:            //所有的__proto__属性均会指向该实例对象所继承到的原型对象即*.prototype
+//robot的原型对象是Robot.prototype,即默认情况下Robot.prototype与robot.__proto__是同一个对象.
+//Robot的原型对象是Function.prototype.
+//Robot.prototype和Function.ptototype的原型对象都是Object.prototype.
+//Object.prototype的原型对象是null. `
 
 ### 函数对象的方法
 
