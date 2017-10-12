@@ -217,27 +217,28 @@
 
 * 流的方式  fs.createReadStream(file).pipe(process.stdout);
 
+### 文件操作
 
-### 拷贝的实现（cp命令） 流的方式实现  fs.createReadStream(src).pipe(fs.createWriteStream(dst));
+* 拷贝的实现（cp命令） 流的方式实现  fs.createReadStream(src).pipe(fs.createWriteStream(dst));
 
-### 创建一个新的文件（touch命令） 写一个空文件 fs.writeFileSync(file,'');
+* 创建一个新的文件（touch命令） 写一个空文件 fs.writeFileSync(file,'');
 
-### 修改一个文件的名称（mv命令） fs.renameSync(file1,file2);
+* 修改一个文件的名称（mv命令） fs.renameSync(file1,file2);
 
-### 删除文件（rm命令） fs .unlinkSync(file);
+* 删除文件（rm命令） fs .unlinkSync(file);
 
-### 创建一个文件夹的命令（mkdir命令） fs.mkdirSync(file);
+* 创建一个文件夹的命令（mkdir命令） fs.mkdirSync(file);
 
-### 查看文件目录的功能(fs命令) fs.readdirSync(file);
+* 查看文件目录的功能(fs命令) fs.readdirSync(file);
 
-### 删除文件目录的功能（rm -rf） fs.rmdirSync(file);
+* 删除文件目录的功能（rm -rf） fs.rmdirSync(file);
 
-### 创建链接（ln file file1.lnk 硬链接  软链接(符号链接) ln -s file file1.lnk） fs.linkSync(file1,file2) fs.symlinkSync(file1,file) 
+* 创建链接（ln file file1.lnk 硬链接  软链接(符号链接) ln -s file file1.lnk） fs.linkSync(file1,file2) fs.symlinkSync(file1,file) 
 
-### 查看符号链接的链接指向 fs.readlinkSync(file);
+* 查看符号链接的链接指向 fs.readlinkSync(file);
 
-### 修改文件所有者（chown） fs.chownSync(file,Number(uid),Number(gid))
+* 修改文件所有者（chown） fs.chownSync(file,Number(uid),Number(gid))
 
-### 修改文件权限（chmod） fs.chmodSync(file,number)
+* 修改文件权限（chmod） fs.chmodSync(file,number)
 
-### 查看文件详细信息（stat） fs.statSync(file)
+* 查看文件详细信息（stat） fs.statSync(file)
