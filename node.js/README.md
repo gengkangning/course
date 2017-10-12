@@ -205,7 +205,7 @@
 
 ## fs.statSync() 同步的stat(2),返回一个stat数组对象  
 
-## 文件读取操作（cat命令的实现）
+### 文件读取操作（cat命令的实现）
 
 * 同步操作 process.argv[2]  //获取命令行参数  fs.openSync(file,'r');//打开文件 fs.readSync(fid,buf,0,len,0) //读取文件 fs.closeSync(fid) //关闭文件
 
@@ -218,22 +218,26 @@
 * 流的方式  fs.createReadStream(file).pipe(process.stdout);
 
 
-## 拷贝的实现（cp命令） 
+### 拷贝的实现（cp命令） 流的方式实现  fs.createReadStream(src).pipe(fs.createWriteStream(dst));
 
-### 流的方式实现  fs.createReadStream(src).pipe(fs.createWriteStream(dst));
+### 创建一个新的文件（touch命令） 写一个空文件 fs.writeFileSync(file,'');
 
-## 创建一个新的文件（touch命令） 
+### 修改一个文件的名称（mv命令） fs.renameSync(file1,file2);
 
-### 写一个空文件 fs.writeFileSync(file,'');
+### 删除文件（rm命令） fs .unlinkSync(file);
 
-## 修改一个文件的名称（mv命令） fs.renameSync(file1,file2);
+### 创建一个文件夹的命令（mkdir命令） fs.mkdirSync(file);
 
-## 删除文件（rm命令） fs .unlinkSync(file);
+### 查看文件目录的功能(fs命令) fs.readdirSync(file);
 
-## 创建一个文件夹的命令（mkdir命令） fs.mkdirSync(file);
+### 删除文件目录的功能（rm -rf） fs.rmdirSync(file);
 
-## 查看文件目录的功能(fs命令) fs.readdirSync(file);
+### 创建链接（ln file file1.lnk 硬链接  软链接(符号链接) ln -s file file1.lnk） fs.linkSync(file1,file2) fs.symlinkSync(file1,file) 
 
-## 删除文件目录的功能（rm -rf） fs.rmdirSync(file);
+### 查看符号链接的链接指向 fs.readlinkSync(file);
 
-## 创建链接（ln file file1.lnk 硬链接  软链接(符号链接) ln file file1.lnk） fs.linkSync(file1,file2)
+### 修改文件所有者（chown） fs.chownSync(file,Number(uid),Number(gid))
+
+### 修改文件权限（chmod） fs.chmodSync(file,number)
+
+### 查看文件详细信息（stat） fs.statSync(file)
