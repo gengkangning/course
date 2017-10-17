@@ -264,8 +264,12 @@
 3. HTTP协议：http
 4. DNS服务：dns
 
-### net 
+### net  var server=require('net').createServer();
 
-* var server=require('net').createServer();
+*   connection事件 当新的connection建立时触发，socket是一个net.socket的实例对象   socket.remoteAdddress   ，有一个data事件
 
+* Telnet（可以模仿浏览器，邮箱,ftp客户端与它们通信） 现在多用于网络服务测试    quit 退出  
 
+* ftp  匿名访问：anonymous
+
+* net.connect({host:host,port:port},function(){})
