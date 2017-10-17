@@ -242,3 +242,11 @@
 * 修改文件权限（chmod） fs.chmodSync(file,number)
 
 * 查看文件详细信息（stat） fs.statSync(file)
+
+### 监视文件的内容
+
+* var w=ch(目录，console.log); 监视某个目录的文件的改变，并打印到控制台上
+
+* w.close(); 停止监视    
+
+* 
