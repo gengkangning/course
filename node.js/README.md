@@ -203,7 +203,7 @@
 
 # 第六章 文件操作(fs)
 
-## fs.statSync() 同步的stat(2),返回一个stat数组对象  
+## fs.statSync() 同步的stat(2),返回一个stat数组对象    fs.statSync(src).isFile() //判断是不是文件 fs.statSync(src).isDirectory() //判断是不是文件夹
 
 ### 文件读取操作（cat命令的实现）
 
@@ -245,8 +245,27 @@
 
 ### 监视文件的内容
 
-* var w=ch(目录，console.log); 监视某个目录的文件的改变，并打印到控制台上
+* var w=watch(目录，console.log); 监视某个目录的文件的改变，并打印到控制台上
 
 * w.close(); 停止监视    
 
-* 
+* ps aux |grep watch 查看当前的进程
+
+### 文件的递归操作
+
+* var join=require('path').join; //用于合并文件路径   join(folder,files[i]);
+
+# 第七章 网络：分布式应用基础
+
+# 第八章 子进程：执行外部程序
+
+1. TCP协议：net
+2. UDP协议：dgram
+3. HTTP协议：http
+4. DNS服务：dns
+
+### net 
+
+* var server=require('net').createServer();
+
+
