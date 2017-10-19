@@ -270,6 +270,16 @@
 
 * Telnet（可以模仿浏览器，邮箱,ftp客户端与它们通信） 现在多用于网络服务测试    quit 退出  
 
-* ftp  匿名访问：anonymous
+### http(基于tcp)
+* curl 服务器地址  
 
-* net.connect({host:host,port:port},function(){})
+* var server=require('http').createServer();
+
+* server.on('request',function(req,res){
+})
+
+* GET方法 http.get(url,function(res){})  状态码：res.statusCode  状态信息:res.statusMessage http版本：res.httpVersion http头：res.headers
+
+* POST方法 http.request()
+
+* DNS(nslookup 查询dns)  dns.lookup(ns,function(err,addr));
