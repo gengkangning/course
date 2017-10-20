@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Mobile Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery-2.2.2.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        #cancle{
+            font-size:16px;
+            font-weight: bold;
+            line-height: 33px;
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <a href="" data-role="none"></a>
+            <h1>添加或注册账号</h1>
+            <a data-role="none" id="cancle">取消</a>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <fieldset data-role="controlgroup">
+                    <label for="username" class="ui-hidden-accessible"> 账号</label>
+                    <input type="password" name="fname"  placeholder="账号" id="username">
+                    <label for="fname" class="ui-hidden-accessible">密码</label>
+                    <input type="password" name="password" placeholder="密码" id="password">
+                </fieldset>
+                <a href="" data-role="button" class="login">登录</a>
+                <a href="" data-role="none">忘记密码？</a>
+                <a href="register.html" data-role="none" style="float:right" rel="external">新用户注册</a>
+            </div>
+        </div>
+    </div> 
+    <script>
+         $(document).on('pageinit',function(){
+            $('.login').on('click',function(){
+                    var myUserId=$('#username').val();
+                    var myPassword=$('#password').val();
+                    $.ajax({
+                        type:'get',
+                        url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+                        data:{status:'login',userID:myUserId,password:myPassword},
+                        dataType:'json',
+                        success:function(data){
+                            if(data==0){
+                                alert('用户名不存在');
+                            }
+                            if(data==2){
+                                alert('用户名密码不符');
+                            }
+                            else{
+                                 $(location).attr('href', 'information.html');
+                            }
+                        }
+                    });
+            });
+        })
+    </script>
+</body>
+</html>

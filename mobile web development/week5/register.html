@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>注册</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <script src="js/jquery-2.2.2.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        #return{
+            font-size: 18px;
+            color:#ccc;
+        }
+        p{
+            color:#ccc;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <a href="login.html" data-role="none" rel="external" id="return"><返回</a>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <h1>设置昵称与密码</h1>
+                <p>密码由8-16位数字、字母或符号组成，至少含有2种及以上的字符</p>
+                <fieldset data-role="controlgroup">
+                    <label for="username" class="ui-hidden-accessible" >昵称</label>
+                    <input type="text" name="fname" id="username" placeholder="账号">
+                    <label for="password" class="ui-hidden-accessible" >密码</label>
+                    <input type="password" name="password" placeholder="密码" id="password">
+                </fieldset>
+                <a href="" data-role="button" class="register">注册</a>
+            </div>
+        </div>
+    </div> 
+    <script>
+        $(document).on('pageinit',function(){
+            $('.register').on('click',function(){
+                    var myUserId=$('#username').val();
+                    var myPassword=$('#password').val();
+                    $.ajax({
+                        type:'get',
+                        url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+                        data:{status:'register',userID:myUserId,password:myPassword},
+                        dataType:'json',
+                        success:function(data){
+                            if(data==0){
+                                alert('用户名重名');
+                            };
+                            if(data==1){
+                                $(location).attr('href', 'login.html');
+                            };
+                            if(data==2){
+                                alert('error');
+                            }
+                        }
+                    });
+            });
+        })
+    </script>
+</body>
+</html>
