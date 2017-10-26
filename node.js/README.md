@@ -283,3 +283,21 @@
 * POST方法 http.request()
 
 * DNS(nslookup 查询dns)  dns.lookup(ns,function(err,addr));
+
+# web应用
+
+##  http响应的完整信息包括四部分：状态行，响应头部字段列表，空行，响应主体
+
+### 状态码
+
+* 1xx 基本信息
+
+* 2xx 成功信息
+
+* 3xx 重定向
+
+* 4xx 客户端错误
+      
+* 5xx 服务器错误
+
+## http响应四部分：请求行，请求头部字段列表，空行，请求主体
