@@ -306,3 +306,11 @@
 # 自动化测试
 
 ## assert断言（肯定性断言，否定性的断言，异常内类的断言）通常包含三个参数，第一个实际结果，预期结果，信息
+
+##  mocha测试
+
+* var expect=require('chai').expect;
+
+* decribe('加法函数的测试',function(){it('0+0=0',function(){ expect.(add(0,0)).to.be.equal(0)  } ) } )   describe测试套件 it测试用例
+
+* mocha 后不跟参数会执行test文件夹里的所有测试脚本，加--recursive参数会执行test及其下文件夹里的所有测试脚本  {a,b}.test.js 会执行a.test.js 和b.test.js
