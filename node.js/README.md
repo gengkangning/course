@@ -314,3 +314,11 @@
 * decribe('加法函数的测试',function(){it('0+0=0',function(){ expect.(add(0,0)).to.be.equal(0)  } ) } )   describe测试套件 it测试用例
 
 * mocha 后不跟参数会执行test文件夹里的所有测试脚本，加--recursive参数会执行test及其下文件夹里的所有测试脚本  {a,b}.test.js 会执行a.test.js 和b.test.js
+
+* --watch 运行测试后保持不退出，可以修改自动化测试脚本，通过保存动态显示测试结果
+
+* --reporter 报表 
+
+* --ball 失败终止执行
+
+* --grep 执行部分测试用例  加-i执行他的补集
