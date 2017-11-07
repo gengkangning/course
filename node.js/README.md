@@ -322,3 +322,11 @@
 * --ball 失败终止执行
 
 * --grep 执行部分测试用例  加-i执行他的补集
+
+## 覆盖率测试 istanbul
+
+* istanbul cover path
+
+* 设置门槛 istanbul check-coverage --statement 90
+
+* mocha 和 istanbul 结合   sitanbul cover mocha -- path     得出测试的覆盖率
