@@ -6,6 +6,18 @@
 
 * inux中使用git仓库：
 
+1. 创建文件夹，进入文件夹，git init（初始化仓库，出现绿色的master）
+
+2. git st 查看本地文件变化
+
+3. git ad  添加修改文件
+
+4. git ci -m "alfjdkl" 提交到本地缓存区
+
+5. git remote add origin url 设置origin
+
+6. git push -u origin master 推送到github
+
 ### 进入git
 
 * cd /wd/tools
