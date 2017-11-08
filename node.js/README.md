@@ -16,7 +16,7 @@
 
 5. git remote add origin url 设置origin
 
-6. git push -u origin master 推送到github
+6. git push -u origin master 推送到github（gp）
 
 ### 进入git
 
@@ -335,6 +335,10 @@
 
 * --grep 执行部分测试用例  加-i执行他的补集
 
+* only 
+
+* after before 
+
 ## 覆盖率测试 istanbul
 
 * istanbul cover path
@@ -342,3 +346,22 @@
 * 设置门槛 istanbul check-coverage --statement 90
 
 * mocha 和 istanbul 结合   sitanbul cover mocha -- path     得出测试的覆盖率
+
+## trvis ci 持续集成  (mocha的终极形态)，自动执行自动化测试
+
+# 调试 debug
+
+## 三种bug 语法错误 synTaxError（最低级错误，导致程序崩溃）编译器会提示具体错误行数，  逻辑错误（通过测试来找出）  运行时错误（有异常捕获不会崩溃）
+
+## jshint 语法错误检查
+
+## 命令行调试 node inspect path
+
+* list(行数) 打印当前代码
+
+* sb(行数)设置断点位置    >当前行   * 断点行
+
+* n 一次执行一行 s 跳进 o 跳出  c 直接执行到断点行数  r重新调试
+
+* bt 调用栈
+## 交互式调试  打印调试
